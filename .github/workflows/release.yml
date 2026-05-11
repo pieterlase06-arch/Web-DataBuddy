@@ -70,10 +70,10 @@ jobs:
       - name: Install Frontend Dependencies
         run: npm install
 
-      # Tauri v2 requires `tauri android init` if the `gen/android` folder isn't committed
       - name: Init Android Project
+        env:
+          NDK_HOME: ${{ env.ANDROID_HOME }}/ndk/25.2.9519653
         run: npx tauri android init
-        continue-on-error: true
 
       - name: Build Android APK
         env:
